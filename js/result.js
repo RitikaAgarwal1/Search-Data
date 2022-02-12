@@ -5,9 +5,7 @@ $(document).ready(function () {
    */
   if (window.localStorage) {
     if (localStorage.userObject) {
-      var user_object = localStorage.getItem('userObject');
-      var testVar;
-      retreivedObject = JSON.parse(user_object); //parses the retrieved object into an JSON object
+      retreivedObject = JSON.parse(localStorage.getItem('userObject')); //parses the retrieved object into an JSON object
       if (JSON.stringify(retreivedObject) == "[]") {
         $('#result-count').text("0 Results");
         $(".result-desc").text(
