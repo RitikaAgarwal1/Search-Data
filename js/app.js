@@ -20,14 +20,16 @@ $(document).ready(function () {
   async function userDetail(e) {
     e.preventDefault();
     localStorage.clear(); //Clears storage for next request
-    email = $('input[type="text"]').val().toLowerCase();
+    value = $('input[type="text"]').val().toLowerCase();
 
-    let x;
-    email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ? x = true : x = false;
-    if (x === true) {
+    let email, phone;
+    value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ? email = true : email = false;
+    value.match(/\d{10,}/)? phone = true: phone = false;
+
+    if (email || (phone && value.length == 10)) {
       document.querySelector('input[type="text"]').parentNode.classList.remove("error");
       try {
-        const url = 'https://ltv-data-api.herokuapp.com/api/v1/records.json?email=' + email;
+        const url = email? 'https://ltv-data-api.herokuapp.com/api/v1/records.json?email=' + value: 'https://ltv-data-api.herokuapp.com/api/v1/records.json?phone=' + value;
         const response = await fetch(url);
         const contents = await response.text();
         console.log(contents);
@@ -36,7 +38,7 @@ $(document).ready(function () {
       } catch (error) {
         console.log(error);
       }
-    } else if (x !== true) {
+    } else if (!email && (!phone || value.length !== 10)) {
       document.querySelector('input[type="text"]').parentNode.classList.add("error");
     }
   }
