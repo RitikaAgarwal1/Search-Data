@@ -62,6 +62,14 @@ section {
   color: #4A4A4A !important;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
 @media (max-width: 991px) {
   h1 {
     font-size: 48px;
@@ -96,6 +104,10 @@ section {
   padding: 20px 16px;
 }
 
+.navbar .user {
+  width: 20px;
+}
+
 /* ************************************************************
 ***************************************************************
 --- Switch Search ---
@@ -108,7 +120,8 @@ section {
   display: inline-flex;
   height: 40px;
   align-items: center;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  column-gap: 10px;
 }
 
 .switch-container p {
@@ -117,11 +130,10 @@ section {
 }
 
 .switch-container span {
-  margin-left: 20px;
   border: 3px solid #f6bc25;
   border-radius: 6px;
   color: #f6bc25;
-  padding: 3px 5px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -147,9 +159,29 @@ section {
   clear: both;
 }
 
-@media (max-width: 767px) {
+/* for tablet view */
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   .switch-container {
     font-size: 10px;
+  }
+}
+
+/* Mobile view */
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .switch-container p {
+    display: none;
+    font-size: 14px;
+  }
+
+  .switch-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .switch-container span {
+    width: 50%;
   }
 }
 
@@ -171,6 +203,14 @@ section {
   -webkit-appearance: none;
   width: 180px;
   margin-left: 20px;
+}
+
+.btn:not(:disabled):not(.disabled).active, .btn:not(:disabled):not(.disabled):active {
+  background: #F6BC25;
+}
+
+.btn:not(:disabled):not(.disabled).active, .btn:not(:disabled):not(.disabled):hover {
+  background: #F2DA56;
 }
 
 .input-group > .form-control {
@@ -231,7 +271,102 @@ section {
   .btn-form-submit {
     margin: 12px 0 0 0;
   }
+  .input-group.error .error-msg{
+    bottom: 30px;
+    width: 100%;
+  }
 }
+
+/* ************************************************************
+***************************************************************
+--- Loader ---
+***************************************************************
+************************************************************ */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  top: 40%;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #f6bc25 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+.spinner {
+  text-align: center;
+  background: #F8F8F8ff;
+  position: fixed;
+  left: 0;
+  bottom: 10%;
+  right: 0;
+  z-index: 1;
+  top: 10%;
+}
+
+.spinner p {
+  font-size : 24px;
+  color: #004A80;
+  position: relative;
+  top: 40%;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tablet view */
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .lds-ring, .lds-ring div {
+    width: 154px;
+    height: 154px;
+  }
+
+  .spinner p {
+    font-weight: 700;
+    margin-top: 3%;
+  }
+}
+
+/* Mobile view */
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .lds-ring, .lds-ring div {
+    width: 124px;
+    height: 124px;
+  }
+
+  .spinner p {
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 3%;
+  }
+}
+
 
 /* ************************************************************
 ***************************************************************
@@ -326,6 +461,24 @@ section {
     flex: 0 0 50.4px;
     font-size: 26.88px;
     margin-right: 10.6px;
+  }
+  .list-item:first-child{
+    order: 1;
+  }
+  .list-item:nth-child(3){
+    order: 2;
+  }
+  .list-item:nth-child(5){
+    order: 3;
+  }
+  .list-item:nth-child(2){
+    order: 4;
+  }
+  .list-item:nth-child(4){
+    order: 5;
+  }
+  .list-item:nth-child(6){
+    order: 6;
   }
 }
 

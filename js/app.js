@@ -2,6 +2,7 @@ $(document).ready(function () {
 
   // hiding input box for phone number
   $("form div input").eq(1).hide();
+  $(".spinner").hide();
 
   // Switching between phone number and email address
   $(".switch-container span").on("click", function (event) {
@@ -39,7 +40,7 @@ $(document).ready(function () {
         index = i;
       }
     });
-    value = $('input').val().toLowerCase();
+    value = $("input").eq(index).val().toLowerCase();
 
     let email, phone;
     value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) ? email = true : email = false;
@@ -48,13 +49,16 @@ $(document).ready(function () {
     if (email || (phone && value.length == 10)) {
       document.querySelector('input[type="text"]').parentNode.classList.remove("error");
       try {
+        $(".spinner").show();
         const url = email ? 'https://ltv-data-api.herokuapp.com/api/v1/records.json?email=' + value : 'https://ltv-data-api.herokuapp.com/api/v1/records.json?phone=' + value;
         const response = await fetch(url);
         const contents = await response.text();
         console.log(contents);
         localStorage.setItem("userObject", contents);
+        $(".spinner").hide();
         window.location.href = "result.html";
       } catch (error) {
+        $(".spinner").hide();
         console.log(error);
       }
     } else if (!email && (!phone || value.length !== 10)) {
