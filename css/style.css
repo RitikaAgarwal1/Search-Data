@@ -98,6 +98,63 @@ section {
 
 /* ************************************************************
 ***************************************************************
+--- Switch Search ---
+***************************************************************
+************************************************************ */
+
+.switch-container {
+  font-size: 16px;
+  text-transform: uppercase;
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  margin-bottom: 20px
+}
+
+.switch-container p {
+  color: #fff;
+  margin: 0;;
+}
+
+.switch-container span {
+  margin-left: 20px;
+  border: 3px solid #f6bc25;
+  border-radius: 6px;
+  color: #f6bc25;
+  padding: 3px 5px;
+  cursor: pointer;
+}
+
+.switch-container span.active{
+  background: #F6BC25;
+  border-radius: 6px;
+  padding: 5px 10px;
+  color: #004A80;
+  font-weight: 700;
+  position: relative;
+}
+
+.switch-container span.active::after {
+  content: '';
+  position: absolute;
+  left: 45%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #f6bc25;
+  clear: both;
+}
+
+@media (max-width: 767px) {
+  .switch-container {
+    font-size: 10px;
+  }
+}
+
+/* ************************************************************
+***************************************************************
 --- Search Form ---
 ***************************************************************
 ************************************************************ */

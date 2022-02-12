@@ -32,11 +32,19 @@
           <h1 class="mb-3">Start Your Search!</h1>
           <h2>Look up for people’s name, photos and online profiles with their email address or phone number. See what you find!</h2>
         </div>
+
+        <!-- Switch between type of search -->
+        <div class="switch-container">
+          <p>Type of search:</p>
+          <span class="active" data-value="email">Email Address</span>
+          <span data-value="phone">Phone Number</span>
+        </div>
         
         <form>
           <div class="input-group">
-            <input class="form-control" type="text" name="email" placeholder="Enter a value" />
-            <p class="error-msg">Please enter a valid email address or phone number</p>
+            <input class="form-control" type="text" name="email" placeholder="Enter an email address" />
+            <input class="form-control" type="number" name="phone" placeholder="Enter a phone number" />
+            <p class="error-msg"></p>
             <button id="btn-search" class="btn btn-form-submit text-uppercase" type="submit">Go!</button>
           </div>
           <div class="d-flex justify-content-start justify-content-md-end align-items-center mt-4">
