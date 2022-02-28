@@ -1,5 +1,3 @@
-# Uplers
-
 Sharing some of my learnings that has helped me become proficient in front-end development- 
 
 Javascript
